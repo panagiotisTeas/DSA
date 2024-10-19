@@ -1,3 +1,4 @@
+#include "Utilities/defines.hpp"
 
 #if defined(_MSC_VER)
     //* Microsoft Visual C++
@@ -27,5 +28,19 @@
 
 #else
     #define debugbreak() (void(0))
+
+#endif
+
+#if defined(DEBUG)
+    #define ASSERT(condition, message) \
+        if(condition)                  \
+        {}                             \
+        else                           \
+        {                              \
+            debugbreak();              \
+        }
+
+#elif
+    #define ASSERT(condition, message)
 
 #endif

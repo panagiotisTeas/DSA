@@ -1,12 +1,15 @@
 #include <iostream>
-#include <signal.h>
 
 #include "DataStructures/Array.hpp"
 
 int main()
 {
-    std::cout << "Hello " << '\n';
-    raise(SIGTRAP);
+    dsa::Array<int, 5> arr = {0, 1, 2, 3, 4};
+    
+    for(size_t i = 0; i < arr.getSize(); i++)
+    {
+        std::cout << arr[i] << '\n';
+    }
 
     return 0;
 }
