@@ -40,7 +40,7 @@ namespace dsa
             return data_[index];
         }
 
-        constexpr const size_t getSize() const { return size; }
+        constexpr size_t getSize() const { return size; }
 
     private:
         T data_[size];
