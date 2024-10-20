@@ -11,5 +11,12 @@ int main()
         std::cout << arr[i] << '\n';
     }
 
+    dsa::Array<int, 5> arr2;
+    
+    for(size_t i = 0; i < arr2.getSize(); i++)
+    {
+        std::cout << arr2[i] << '\n';
+    }
+
     return 0;
 }

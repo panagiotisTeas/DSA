@@ -1,8 +1,5 @@
 #include "Utilities/defines.hpp"
 
-//* Uncomment only if you're going to work on windows and use g++
-#define SIGTRAP SIGABRT
-
 #if defined(_MSC_VER)
     //* Microsoft Visual C++
     #define debugbreak() __debugbreak()
@@ -20,7 +17,8 @@
     #else
         //* Other architectures
         #include <signal.h>
-        #define debugbreak() raise(SIGTRAP)
+        #define debugbreak() raise(SIGTRAP); \
+            winDebugBreak()
 
     #endif
 

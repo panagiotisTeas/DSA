@@ -20,27 +20,38 @@ namespace dsa
 
     public:
 
-        //*
-        template<typename... Args>
-        constexpr Array(Args&&... args) noexcept
+        //* Default Constructor (Fills with 0's)
+        constexpr Array() noexcept
         {
+            for (size_t i = 0; i < size; i++)
+                data_[i] = 0;
+        }
+
+        //* Constructor with variadic arguments
+        template<typename... Args>
+        constexpr Array(Args&&... args)
+        {
+            ASSERT(size == sizeof...(args), "List is not the same size as the defined array");
             size_t i = 0;
             ((data_[i++] = T(forward<Args>(args))),...);
         }
 
+        //* [] operator overload 
         constexpr reference operator[](size_t index)
         {
             ASSERT(index < size, "Index out of points!");
             return data_[index];
         }
 
+        //* [] operator overload (const version)
         constexpr const_reference operator[](size_t index) const
         {
             ASSERT(index < size, "Index out of points!");
             return data_[index];
         }
 
-        constexpr size_t getSize() const { return size; }
+        //* Return size of array
+        constexpr size_t getSize() const noexcept { return size; }
 
     private:
         T data_[size];
